@@ -1,3 +1,4 @@
+alert("cldr");
 /*global  Globalize*/
 
 Globalize.load({
