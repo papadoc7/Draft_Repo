@@ -1,3 +1,4 @@
+alert("timeSeriesTranslations");
 /*global  Globalize*/
 //= require moment/en-gb
 //= require moment/es
