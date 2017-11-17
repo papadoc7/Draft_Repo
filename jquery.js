@@ -1,3 +1,4 @@
+alert("jquery");
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
