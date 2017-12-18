@@ -1,4 +1,4 @@
-console.log("cldr.js file");
+console.log('cldr.js file');
 /*global  Globalize*/
 
 Globalize.load({
