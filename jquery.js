@@ -1,4 +1,4 @@
-console.log("jquery.js file");
+console.log('jquery.js file');
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
