@@ -1,4 +1,4 @@
-console.log("timeSeriesTranslations.js file");
+console.log('timeSeriesTranslations.js file');
 /*global  Globalize*/
 //= require moment/en-gb
 //= require moment/es
