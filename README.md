@@ -1,3 +1,3 @@
 # Draft_Repo
 
-This repo contains different files from several projects.
+Files which belong to possible projects for training purposes.
