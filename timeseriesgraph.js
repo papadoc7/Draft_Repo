@@ -1,4 +1,4 @@
-console.log('timeseriesgraph');
+console.log('tsg');
 /*global moment, Globalize, d3_3_5_16, TerraRailsViewModels */
 //= require third_party/terra/jquery/globalize/globalize/number.js
 //= require ./util/locale/timeSeriesTranslations
