@@ -1,4 +1,4 @@
-console.log("application.js file");!function(t){"undefined"==typeof t.fn.each2&&t.extend(t.fn,{each2:function(e){for(var n=t([0]),i=-1,a=this.length;++i<a&&(n.context=n[0]=this[i])&&!1!==e.call(n[0],i,n););return this}})}(jQuery),function(t,e){"use strict";function n(e){var n=t(document.createTextNode(""));e.before(n),n.before(e),n.remove()}
+console.log('application.js file');!function(t){"undefined"==typeof t.fn.each2&&t.extend(t.fn,{each2:function(e){for(var n=t([0]),i=-1,a=this.length;++i<a&&(n.context=n[0]=this[i])&&!1!==e.call(n[0],i,n););return this}})}(jQuery),function(t,e){"use strict";function n(e){var n=t(document.createTextNode(""));e.before(n),n.before(e),n.remove()}
 function i(t){var e,n,i,a;if(!t||t.length<1)return t;for(e="",n=0,i=t.length;n<i;n++)a=t.charAt(n),e+=X[a]||a;return e}
 function a(t,e){for(var n=0,i=e.length;n<i;n+=1)
 if(o(t,e[n]))return n;return-1}
