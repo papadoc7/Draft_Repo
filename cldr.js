@@ -1,5 +1,5 @@
 console.log('cldr.js file');
-/*global  Globalize*/
+/* global  Globalize */
 
 Globalize.load({
   'main': {
