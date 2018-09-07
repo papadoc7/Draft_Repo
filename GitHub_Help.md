@@ -272,7 +272,8 @@ Run this command in your repository:
 - on terminal write `git push -f` 
 
 
-another example of squashing
+  **<u>another example of squashing:</u>** 
+
 
 - `git log --pretty=oneline` (to see the history) 
 
