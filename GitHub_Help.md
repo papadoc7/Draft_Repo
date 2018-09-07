@@ -667,8 +667,31 @@ Step 2: Re-install the following and make sure that the run git in command promp
 # ERROR fatal: Reference has invalid format:'refs/heads/master
 
  
-
 * This happens when you shutdown by holding power down.
 
 * Clean up the directory of any conflicting branches etc. .git/refs/remotes/origin/ or.git/logs/remotes/origin/
 
+
+# Set DiffMerge as external tool
+git mergetool --tool=sourcetree`
+
+The .gitconfig (on Mac is: Users/ab123456/.gitconfig) file should have the below content
+
+```sh[core]
+[core]
+	excludesfile = /Users/ab123456/.gitignore_global
+	editor = open -W -n
+[difftool "sourcetree"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --nosplash \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/DiffMerge.app/Contents/MacOS/DiffMerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	trustExitCode = true
+[user]
+	name = name
+	email = ab123456@mail.com
+[commit]
+	template = /Users/ab123456/.stCommitMsg
+```
+
+If it doesn't work check again that the location is the correct one 
