@@ -12,7 +12,6 @@ Your local repository consists of three "trees" maintained by git. The first one
 
 Typical workflow will be like this:
 
-- git checkout -b branchName
 - Create/update the files you need
 - `git status` (to check the files that have been changed)
 - `git add .` (to add all the modified/updated/created files)
@@ -132,6 +131,149 @@ Run this command in your repository:
 
 **<u>or through command line + text editor:</u>** 
 
+ - git rebase -i HEAD~5`  after tilde the number of the commits you want to squash, in this example are 5 the commits that I want to squash
+
+- after that it will pop up a window and it will have something like 
+
+  ```a931ac7c808e2471b22b5bd20f0cad046b1c5d0d c
+  pick b4421eda fixing test
+  pick 46329ec3 Added this and that
+  pick 7f43b9cf Added more stuff
+  pick 62c9b90e changed some stuff
+  pick 21a6d19g creating this thing
+  
+  # Rebase fcdad13e..21a6d19g onto fcdad13e (5 commands)
+  #
+  # Commands:
+  # p, pick = use commit
+  # r, reword = use commit, but edit the commit message
+  # e, edit = use commit, but stop for amending
+  # s, squash = use commit, but meld into previous commit
+  # f, fixup = like "squash", but discard this commit's log message
+  # x, exec = run command (the rest of the line) using shell
+  # d, drop = remove commit
+  #
+  # These lines can be re-ordered; they are executed from top to bottom.
+  #
+  # If you remove a line here THAT COMMIT WILL BE LOST.
+  #
+  # However, if you remove everything, the rebase will be aborted.
+  #
+  # Note that empty commits are commented out
+  
+  ```
+
+- then change the 2nd pick and everything after that with squash and you should have something like 
+
+  ```s
+  pick b4421eda fixing test
+  squash 46329ec3 Added this and that
+  squash 7f43b9cf Added more stuff
+  squash 62c9b90e changed some stuff
+  squash 21a6d19g creating this thing
+  
+  # Rebase fcdad13e..21a6d19g onto fcdad13e (5 commands)
+  #
+  # Commands:
+  # p, pick = use commit
+  # r, reword = use commit, but edit the commit message
+  # e, edit = use commit, but stop for amending
+  # s, squash = use commit, but meld into previous commit
+  # f, fixup = like "squash", but discard this commit's log message
+  # x, exec = run command (the rest of the line) using shell
+  # d, drop = remove commit
+  #
+  # These lines can be re-ordered; they are executed from top to bottom.
+  #
+  # If you remove a line here THAT COMMIT WILL BE LOST.
+  #
+  # However, if you remove everything, the rebase will be aborted.
+  #
+  # Note that empty commits are commented out
+  ```
+
+- save that and close that popup window
+
+- it will pop up a new one which will be similar to:
+
+  ```
+  # This is a combination of 5 commits.
+  # This is the 1st commit message:
+  
+  fixing test
+  
+  # This is the commit message #2:
+  
+  Added this and that
+  
+  # This is the commit message #3:
+  
+  Added more stuff
+  
+  # This is the commit message #4:
+  
+  changed some stuff
+  
+  # This is the commit message #5:
+  
+  creating this thing
+  
+  # Please enter the commit message for your changes. Lines starting
+  # with '#' will be ignored, and an empty message aborts the commit.
+  #
+  # Author:    ab123456 <username@yahoo.com>
+  # Date:      Fri Aug 17 16:53:05 2018 +0100
+  #
+  # interactive rebase in progress; onto fcdad13e
+  # Last commands done (5 commands done):
+  #    squash 64c9b90e a message here
+  #    squash 22a6d19d a different message here
+  # No commands remaining.
+  # You are currently rebasing branch 'testBranch' on 'fcdad13e'.
+  #
+  # Changes to be committed:
+  #	modified:   charted-view-dataaccess-ml/pom.xml
+  #	modified:   repo/src/main/java/com/assessments/charted/something/BaseChartedImpl.java
+  #	modified:  repo/src/main/java/com/assessments/charted/impl/ChartedDataSourceImpl.java
+  
+  
+  ```
+
+  Remove the unnecessary messages at the beginning in order to have something like
+
+  ```
+  # This is a combination of 5 commits.
+  # This is the 1st commit message:
+  
+  creating this thing
+  
+  # Please enter the commit message for your changes. Lines starting
+  # with '#' will be ignored, and an empty message aborts the commit.
+  #
+  # Author:    ab123456 <username@yahoo.com>
+  # Date:      Fri Aug 17 16:53:05 2018 +0100
+  #
+  # interactive rebase in progress; onto fcbad03e
+  # Last commands done (5 commands done):
+  #    squash 64c9b90e a message here
+  #    squash 22a6d19d a different message here
+  # No commands remaining.
+  # You are currently rebasing branch 'testBranch' on 'fcdad13e'.
+  #
+  # Changes to be committed:
+  #	modified:   charted-view-dataaccess-ml/pom.xml
+  #	modified:  repo/src/main/java/com/assessments/charted/something/BaseChartedImpl.java
+  #	modified: repo/src/main/java/com/assessments/charted/impl/ChartedDataSourceImpl.java
+  
+  ```
+
+  after that save it and close that window
+
+- on terminal write `git push -f` 
+
+
+another example of squashing
+
 - `git log --pretty=oneline` (to see the history) 
 
   ie
@@ -142,7 +284,7 @@ Run this command in your repository:
   df239176e1a2ffac927d8b496ea00d5488481db5 a
   ```
 
-  that is, a was the first commit, then b and last commit was c. After c we decide to squash b and c together.
+  a was the first commit, then b and last commit was c. After c we decide to squash b and c together.
 
 - `git rebase --interactive HEAD~2` (will give us an editor such as below. Note that HEAD~2 means how many parents up do you want to merge with. If you committed and pushed twice then 2, if 4 then 4.)
 
